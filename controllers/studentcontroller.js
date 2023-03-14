@@ -2,7 +2,7 @@ const { response } = require('express')
 const studentmodel=require('../models/studentmodel')
 
 //show the list of student
-const index=(req,res,next)=>{
+const index=(req,res)=>{
     studentmodel.find()
     .then(response=>{
         res.json({
@@ -17,7 +17,7 @@ const index=(req,res,next)=>{
 }
 
 //show single student
-const show=(req,res,next)=>{
+const show=(req,res)=>{
     let studentId=req.body.studentId
     studentmodel.findById(studentId)
     .then(response=>{
@@ -32,7 +32,7 @@ const show=(req,res,next)=>{
     })
 }
 //added student
-const store=(req,res,next)=>{
+const store=(req,res)=>{
     let studentroute=new studentmodel({
         username:req.body.username,
         email:req.body.email,
@@ -54,7 +54,7 @@ const store=(req,res,next)=>{
 
 //upddate
 
-const update=(req,res,next)=>{
+const update=(req,res)=>{
     let studentId=req.body.studentId
     let updatedData={
         username:req.body.username,
@@ -76,7 +76,7 @@ const update=(req,res,next)=>{
 }
 
 //delete
-const destroy=(req,res,next)=>{
+const destroy=(req,res)=>{
     let studentId=req.body.studentId
     studentmodel.findOneAndRemove(studentId)
     .then(()=>{

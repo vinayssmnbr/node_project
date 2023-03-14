@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-// const Schema =mongoose.Schema
-
 const studentSchema =mongoose.Schema({
     username:{
         type:String,
@@ -25,6 +23,6 @@ const studentSchema =mongoose.Schema({
         required:true,
         trim:true
     }
-},{timestamps:true})
+})
 const studentmodel=mongoose.model('nodecrud',studentSchema)
 module.exports=studentmodel
