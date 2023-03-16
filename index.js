@@ -4,8 +4,10 @@ const app=express()
 const mongoose=require("mongoose")
 const studentRoute=require('./routes/studentroute')
 const cors=require('cors')
+const authRoute=require('./routes/auth')
+const cookieParser = require('cookie-parser')
 app.use(cors())
-
+app.use(cookieParser())
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
@@ -21,3 +23,5 @@ app.listen(PORT,()=>{
 })
 
     app.use(  '/api/studentroute',studentRoute)
+    app.use('/api',authRoute)
+    
